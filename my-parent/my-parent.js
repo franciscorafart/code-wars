@@ -7,31 +7,27 @@
 // Place all people in alphabetical order where Mothers are followed by their children.I.E "aAbaBb" => "AaaBbb".
 
 const findChildren = dancingBrigade => {
-  // Put item in dict with their count
-  const moms = stringToArr(dancingBrigade).filter(ch => !isLower(ch)).sort((a,b) => a>b)
-  const kids = stringToArr(dancingBrigade).filter(ch => isLower(ch)).sort((a,b) => a>b)
+  const moms = strToArr(dancingBrigade,1).filter(ch => !isLower(ch)).sort((a,b) => a>b)
+  const kids = strToArr(dancingBrigade,1).filter(ch => isLower(ch)).sort((a,b) => a>b)
 
   let result = []
+
   for (let mom of moms){
     let momsKids = kids.filter(k => k == mom.toLowerCase())
     result.push(mom,...momsKids)
   }
-  return arrToStr(result)
+  return strToArr(result,-1)
 };
 
 const isLower = (ch) => ch == ch.toLowerCase()
 
-const stringToArr = str => {
-  const result = []
-  for (let i=0; i<str.length; i++){
-    result.push(str.charAt(i));
+const strToArr = (iterable, direction) => {
+  let result = direction==1? []: ''
+  for (let i=0; i<iterable.length; i++){
+    direction==1? result.push(iterable.charAt(i)): result=result+iterable[i]
   }
+
   return result
 }
-const arrToStr = arr => {
-  let result = ''
-  for (let ch of arr){
-    result = result+ch
-  }
-  return result
-}
+
+console.log(findChildren('uwwWUueEe'))
