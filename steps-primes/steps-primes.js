@@ -1,7 +1,8 @@
 function step(g, m, n) {
     let primes = []
     for (let i=m; i<=n; i++){
-      if(isPrime(i)){ primes.push(i)
+      if(isPrime(i)){ 
+        primes.push(i)
         if (primes.length>=2){
             const thisStep = scanSteps(primes,g)
             if (thisStep) { return thisStep }
