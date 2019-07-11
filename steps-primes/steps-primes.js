@@ -1,11 +1,11 @@
-function step(g, m, n) {
+const step = (g, m, n) => {
     let primes = []
     for (let i=m; i<=n; i++){
       if(isPrime(i)){ 
         primes.push(i)
         if (primes.length>=2){
-            const thisStep = scanSteps(primes,g)
-            if (thisStep) { return thisStep }
+          const thisStep = scanSteps(primes,g)
+          if (thisStep) { return thisStep } 
           }
         }
     }
@@ -24,6 +24,7 @@ const scanSteps = (arr,step)=> {
   const lastElement = arr[arr.length-1]
   for (let i=lastElement; i>=0; i--){
     const thisStep = lastElement-arr[i]
+    
     if (thisStep == step){
       return [arr[i], lastElement]
     }
